@@ -1,29 +1,28 @@
 <template>
   <div>
     <div
-      class="bg-white text-left  w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+      class="bg-white text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
     >
       <div class="mb-4">
         <label
           class="block text-center text-black text-xl py-2 font-bold mb-2"
           for="priceaddress"
         >
-          Add profile to become my friends.
+          Add Ice Cream for sale this website.!
         </label>
 
         <form @submit="onFormSubmit">
           <div class="form-group">
             <label
-              class="text-left block text-blue-600 
-              py-2 font-bold mt-2 items-start"
+              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
               htmlFor="name"
             >
-              name</label
+              Name</label
             >
             <input
               class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
               type="text"
-              placeholder="input your name.."
+              placeholder="input your icecream name.."
               :class="getInputClass('name')"
               id="name"
               name="name"
@@ -36,12 +35,14 @@
           </div>
           <div class="form-group">
             <label
-              class="text-left block text-blue-600 
-              py-2 font-bold mt-2 items-start"
+              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
               htmlFor="describe"
               >describe</label
             >
-            <input
+            <textarea
+              rows="4"
+              cols="50"
+              maxlength="100"
               class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
               type="text"
               placeholder="input your describe.."
@@ -50,7 +51,8 @@
               name="describe"
               v-model="formElements.describe.value"
               @keyup="onFormChange($event)"
-            />
+            >
+            </textarea>
             <div class="invalid-feedback">
               {{ getErrorMessage("describe") }}
             </div>
@@ -58,13 +60,12 @@
 
           <div class="form-group">
             <label
-              class="text-left block mt-4 text-blue-600
-              font-bold  items-start"
+              class="text-left block mt-4 text-blue-600 font-bold items-start"
               htmlFor="price"
               >price</label
             >
             <input
-              class="mt-2 shadow text-left appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out invalid-feedback"
+              class="mt-2 shadow text-left appearance-none border rounded w-2/11 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out invalid-feedback"
               type="price"
               :class="getInputClass('price')"
               id="price"
@@ -73,19 +74,49 @@
               @keyup="onFormChange($event)"
               placeholder="Input your price.."
             />
+            <span class="text-black font-normal ml-2"> Baht </span>
             <div>
               {{ getErrorMessage("price") }}
             </div>
           </div>
 
           <div class="form-group">
-            <label
-              class="text-left block text-blue-600 
-              py-2 font-bold mt-2 items-start"
-              htmlFor="brand"
-            >
-              brand</label
-            >
+            <label class="text-left block text-blue-600 py-2 font-bold mt-2 items-start" 
+              htmlFor="brand">brand</label>
+            <div>
+              <!-- <select name="brand" id="brand" v-model="brandEnter" class="bg-gray-100 px-4 py-2 mb-4">
+                <option v-for="formElements.brandlists.brand in formElements.brandlists" >
+                  {{ formElements.brandlists.brand }}
+                </option>
+              </select> -->
+              <!-- <select name="brand" id="brand" v-model="brandEnter" class="bg-gray-100 px-4 py-2 mb-4">
+                <option v-for="brand in brandlists">
+                  {{ formElements.brandlists.brand }}
+                </option>s
+              </select> -->
+              
+              <!-- <div class="flex flex-col col-span-2">
+                            <label for="chosensubject" class="text-sm leading-7 text-gray-600">Subject</label>
+                            <select id="chosensubject" v-model="chosensubject" name="chosensubject"
+                                class="bg-gray-100 px-4 py-2 mb-4">
+                                <option v-for="subject in subject_lists" :value="subject.subject_id">
+                                    {{subject.subject_name}}
+                                </option>
+                        </div> -->
+              
+              <!-- <select v-model="otherfruit"
+                      <option v-for="fruit in fruitlists" v-bind:value="fruit.id">
+                        {{ fruit.fruit}}
+                      <option>
+                    </select> -->
+
+              <select name="icecreams" id="icecreams">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
             <input
               class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
               type="text"
@@ -102,8 +133,7 @@
           </div>
           <div class="form-group">
             <label
-              class="text-left block text-blue-600 
-              py-2 font-bold mt-2 items-start"
+              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
               htmlFor="size"
             >
               size</label
@@ -124,8 +154,7 @@
           </div>
           <div class="form-group">
             <label
-              class="text-left block text-blue-600 
-              py-2 font-bold mt-2 items-start"
+              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
               htmlFor="topping"
             >
               topping</label
@@ -146,8 +175,7 @@
           </div>
           <div>
             <label
-              class="text-left block mt-4 text-blue-600
-        font-bold  items-start"
+              class="text-left block mt-4 text-blue-600 font-bold items-start"
               htmlFor="image"
               >Image</label
             >
@@ -161,14 +189,10 @@
           <div class="text-center">
             <button
               type="submit"
-              class="mt-4 bg-gradient-to-r from-purple-800 
-                to-green-500 hover:from-pink-500 hover:to-green-500
-                 text-white font-bold py-2 px-4 rounded 
-                 focus:ring transform transition hover:scale-105
-                  duration-300 ease-in-out btn btn-primary"
+              class="mt-4 bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
               :disabled="!formValid"
             >
-              Register
+              Add Product
             </button>
           </div>
         </form>
@@ -181,6 +205,15 @@ export default {
   name: "RegisterForm",
   data() {
     return {
+      // brandEnter: null,
+      //   brandlists: [
+      //     { id: "brand1", brand: "Baskin Robbins" },
+      //     { id: "brand2", brand: "Ben&Jerry’s" },
+      //     { id: "brand3", brand: "Dairy Queen" },
+      //     { id: "brand4", brand: "Suzukien" },
+      //     { id: "brand5", brand: "Swensens" },
+      //     { id: "brand6", brand: "Umm Milk" }
+      //   ],
       image: null,
       formElements: {
         name: {

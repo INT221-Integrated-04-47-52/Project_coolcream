@@ -1,4 +1,5 @@
 <template>
+  <!-- show product with img, name, price -->
   <div
     class="bg-white hover:bg-blue-100 m-12 h-96 w-96 shadow-lg rounded-lg pb-4 "
   >
@@ -10,36 +11,39 @@
     <span
       class="text-gray-600 font-sans text-xl
   py-2 font-bold mb-2 "
-      >{{ icecream.username }}</span
+      >{{ icecream.name }}</span
     >
-    <br />
+
+    <span
+      class="text-gray-600 font-sans text-xl
+  py-2 font-bold mb-2 "
+      >{{ icecream.price }}</span
+    >
+    
+    <!-- see more product button -->
     <button
-      class=" btn btn-primary mt-2 bg-gradient-to-r from-green-500 
-  to-green-800 hover:from-blue-500 hover:to-pink-500 text-white font-bold 
-  py-2 px-4 rounded focus:ring transform transition hover:scale-105 
-  duration-300 ease-in-out"
+      class="mt-2 ml-4 text-red-600 font-bold py-2 px-4 rounded hover:bg-red-600 hover:text-white"
       type="button "
       @click="toggleVisibility"
     >
       See More
     </button>
 
+    <!-- delete product button -->
     <button
-      class="mt-2 ml-4 bg-gradient-to-r from-red-500 to-red-500 hover:from-pink-500 hover:to-red-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+      class="mt-2 ml-4 text-blue-900 font-bold py-2 px-4 rounded hover:bg-blue-900 hover:text-white"
       @click="deleteList(icecream.id)"
       type="button"
     >
       Delete
     </button>
     
-  </div>
+  </div> 
 </template>
+
 <script>
-
 export default {
-  components: {
-
-  },
+  components: {},
   name: "BlogIcecream",
   props: ["icecream"],
   icecreams: Array,
@@ -49,7 +53,7 @@ export default {
       this.$emit("delete", id);
     },
     toggleVisibility() {
-      this.$emit("icecream-popup", this.friend);
+      this.$emit("icecream-popup", this.icecreams);
     }, 
   },
 };

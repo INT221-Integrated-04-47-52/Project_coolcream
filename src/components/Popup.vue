@@ -81,12 +81,7 @@
           <p class="my-2 text-black">
           <label for="brand">Brand :</label>
           <select name="brand" id="brand" v-if="isEdit" v-model="brandEnter">
-            <option value="baskinrobbins">Baskin Robbins</option>
-            <option value="benjerry">Ben&Jerry’s</option>
-            <option value="dairyqueen">Dairy Queen</option>
-            <option value="suzukien">Suzukien</option>
-            <option value="swensens">Swensens</option>
-            <option value="ummmilk">Umm Milk</option>
+            <option value="brand in brandlists">{{brandlists.brand}}</option>
           </select>
           <span v-else class="text-pink-500"> {{ icecream.brand }} </span>
           </p>
@@ -123,6 +118,8 @@
 
         </div>
       </div>
+
+      <!-- button save, cancel -->
       <div class=" flex flex-row-reverse mr-4">
         <button
           class="justify-center btn btn-primary mt-2 bg-gradient-to-b from-green-500 
@@ -132,9 +129,10 @@
           type="button "
           @click.prevent="submit(icecream)"
         >
-          Submit
+          Save
         </button>
 
+        
         <button
           class="mx-4 justify-center btn btn-primary mt-2 bg-gradient-to-b from-blue-500 
   to-blue-800 hover:from-pink-500 hover:to-blue-500 text-white font-bold 
@@ -145,10 +143,12 @@
         >
           Edit
         </button>
+        
       </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -160,6 +160,14 @@ export default {
 
       lastdayEnter: "",
       isEdit: false,
+      brandEnter: null,
+      brandlists:[
+        {id:'brand1',brand:'Baskin Robbins'},
+        {id:'brand2',brand:'Ben&Jerry’s'},
+        {id:'brand3',brand:'Dairy Queen'},
+        {id:'brand4',brand:'Suzukien'},
+        {id:'brand5',brand:'Swensens'},
+        {id:'brand6',brand:'Umm Milk'},]
     };
   },
   props: ["icecream"],
