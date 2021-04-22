@@ -1,4 +1,4 @@
-# coolcream
+# community
 
 ## Project setup
 ```

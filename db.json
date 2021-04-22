@@ -1,0 +1,10 @@
+{
+    "ice-cream": [{
+        "name": "Oreo Blizzard",
+        "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+        "prize": 50,
+        "size": ["S","M","L","XL"],
+        "brand": "Dairy Queen",
+        "lastDay": "27/07/2021"
+    }]
+}
