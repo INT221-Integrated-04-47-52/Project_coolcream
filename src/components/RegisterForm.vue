@@ -1,8 +1,7 @@
 <template>
   <div>
     <div
-      class="bg-white text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
-    >
+      class="bg-white text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
       <div class="mb-4">
         <label
           class="block text-center text-black text-xl py-2 font-bold mb-2"
@@ -109,36 +108,33 @@
                         {{ fruit.fruit}}
                       <option>
                     </select> -->
-
-              <select name="icecreams" id="icecreams">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                     
+              <select name="icecreams" class="border-2 p-2 transform transition  duration-300 ease-in-out"
+             :class="getInputClass('brand')"
+              id="brand"
+              brand="brand" v-model="formElements.brand.value" 
+              @keyup="onFormChange($event)" required>
+              <option value="" disabled selected>Select your option</option>
+              <option value="Baskin Robbins">Baskin Robbins</option>
+                <option value="Ben&Jerry's">Ben&Jerry's</option>
+                <option value="Dairy Queen">Dairy Queen</option>
+                <option value="Suzukien">Suzukien</option>
+                <option value="Swensens">Swensens</option>
+                <option value="Umm Milk">Umm Milk</option>
               </select>
             </div>
-            <input
-              class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-              type="text"
-              placeholder="input your brand.."
-              :class="getInputClass('brand')"
-              id="brand"
-              brand="brand"
-              v-model="formElements.brand.value"
-              @keyup="onFormChange($event)"
-            />
             <div class="invalid-feedback">
               {{ getErrorMessage("brand") }}
             </div>
+          
+            
           </div>
-          <div class="form-group">
+          <div class="form-group ">
             <label
-              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
+              class="text-left block text-blue-600 pt-2  font-bold mt-2 items-start "
               htmlFor="size"
-            >
-              size</label
-            >
-            <input
+            >Size</label>
+          <!--  <input
               class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
               type="text"
               placeholder="input your size.."
@@ -147,8 +143,15 @@
               size="size"
               v-model="formElements.size.value"
               @keyup="onFormChange($event)"
-            />
-            <div class="invalid-feedback">
+            /> -->
+            <div class=" text-blue-600 flex flex-row -mt-2 " >
+         
+            <option @click="selectSize('S')" :class="{'bg-blue-600 text-white':formElements.size.value=='S'}" value="size" class="mr-2 text-center w-16 border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">S</option>
+            <option @click="selectSize('M')" :class="{'bg-blue-600 text-white':formElements.size.value=='M'}" value="size" class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">M</option> 
+            <option @click="selectSize('X')" :class="{'bg-blue-600 text-white':formElements.size.value=='X'}" value="size" class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">X</option>
+            <option @click="selectSize('XL')" :class="{'bg-blue-600 text-white':formElements.size.value=='XL'}" value="size" class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">XL</option>
+          </div>
+             <div class="invalid-feedback">
               {{ getErrorMessage("size") }}
             </div>
           </div>
@@ -205,6 +208,8 @@ export default {
   name: "RegisterForm",
   data() {
     return {
+      
+      props: ["brandlists"],
       // brandEnter: null,
       //   brandlists: [
       //     { id: "brand1", brand: "Baskin Robbins" },
@@ -251,11 +256,10 @@ export default {
         },
         brand: {
           type: "text",
-          value: null,
+          value: "",
           validator: {
             required: true,
-            minLength: 5,
-            maxLength: 15,
+            value: ""
           },
           touched: false,
           error: { status: true, message: "" },
@@ -265,8 +269,6 @@ export default {
           value: null,
           validator: {
             required: true,
-            minLength: 5,
-            maxLength: 15,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -287,6 +289,10 @@ export default {
   },
 
   methods: {
+    selectSize(size){
+      this.formElements.size.value = size;
+
+    },
     uploadImg(event) {
       const file = event.target.files[0];
       const reader = new FileReader();
@@ -393,5 +399,9 @@ export default {
 }
 .card {
   max-width: 450px;
+}
+body {
+  background-color: var(--bg);
+  color: var(--color);
 }
 </style>
