@@ -61,8 +61,7 @@
             <label
               class="text-left block mt-4 text-blue-600 font-bold items-start"
               htmlFor="price"
-              >price</label
-            >
+              >price</label>
             <input
               class="mt-2 shadow text-left appearance-none border rounded w-2/11 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out invalid-feedback"
               type="price"
