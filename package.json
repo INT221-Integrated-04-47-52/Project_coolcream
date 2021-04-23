@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "backend": "json-server --watch db.json --port 3002"
+    "backend": "json-server --watch db.json --port 4003"
   },
   "dependencies": {
     "autoprefixer": "^9",
