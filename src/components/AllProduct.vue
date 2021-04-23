@@ -35,7 +35,7 @@ export default {
       isVisible: false,
       ifEdit: false,
       icecream: [],
-      url: "http://localhost:3002/icecream",
+      url: "http://localhost:4003/icecream",
     };
   },
   methods: {

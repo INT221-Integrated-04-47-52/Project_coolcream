@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full container mx-auto ml-18 flex items-center justify-between bg-white">
+
+  <div class="w-full container mx-auto  flex items-center justify-between ">
     <!-- <div class="w-full  flex items-center justify-between"> -->
       <a class="flex items-center text-blue-800 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
         Cool<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-pink-500 to-purple-500">Cream</span>
@@ -13,6 +14,7 @@
         <router-link to="/members" class="mx-4 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
         >Members</router-link> 
       </div>
+    
     <!-- </div> -->
   </div>
 

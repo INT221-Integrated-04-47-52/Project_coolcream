@@ -5,7 +5,7 @@
     <div class="w-5/12 h-96 bg-white rounded-3xl shadow-lg ">
       <div
         class="cursor-pointer mt-4  mr-8  focus:ring transform transition hover:scale-105 
-      duration-300 ease-out  mr-4 flex flex-row-reverse   "
+      duration-300 ease-out  flex flex-row-reverse   "
         @click="close"
       >
         <span class="material-icons  ">
@@ -22,7 +22,7 @@
       <div class="w-96 flex flex-row-reverse ml-64 text-left">
         <div
           class=" ml-12 -mt-72  mr-16  ext-left block text-gray-800 
-            py-2 font-bold mt-2 items-start"
+            py-2 font-bold  items-start"
         >
           <!-- Edit Product name-->
           <p class="my-2 text-black">
@@ -91,7 +91,7 @@
             Size :
             <button>S</button>
             <button>M</button>
-            <button>X</button>
+            <button>L</button>
             <button>XL</button>
           </p>
 
@@ -154,10 +154,8 @@ export default {
   data() {
     return {
       nameEnter: "",
-      // emailEnter: "",
       describeEnter: "",
       priceEnter: "",
-
       lastdayEnter: "",
       isEdit: false,
       brandEnter: null,
@@ -167,7 +165,9 @@ export default {
         {id:'brand3',brand:'Dairy Queen'},
         {id:'brand4',brand:'Suzukien'},
         {id:'brand5',brand:'Swensens'},
-        {id:'brand6',brand:'Umm Milk'},]
+        {id:'brand6',brand:'Umm Milk'},],
+      sizeEnter: "",
+      toppingEnter: " "
     };
   },
   props: ["icecream"],
@@ -179,17 +179,26 @@ export default {
     edit() {
       this.isEdit = true;
       this.nameEnter = this.icecream.name;
-      this.emailEnter = this.icecream.email;
       this.describeEnter = this.icecream.describe;
+      this.priceEnter = this.icecream.price;
+      this.brandEnter = this.icecream.brand;
+      this.sizeEnter = this.icecream.size;
+      this.toppingEnter = this.icecream.topping;
+      this.lastdayEnter = this.icecream.lastday;
+   
     },
     submit(icecream) {
       if (this.isEdit) {
         this.$emit("icecream-submit", {
           image: icecream.image,
           name: this.nameEnter,
-          email: this.emailEnter,
           describe: this.describeEnter,
-          id: icecream.id,
+         price: this.priceEnter,
+          brand: this.brandEnter,
+          size: this.sizeEnter,
+          topping: this.toppingEnter,
+
+          lastday: this.this.lastdayEnter,          id: icecream.id,
         });
         this.close();
       }

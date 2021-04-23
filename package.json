@@ -6,15 +6,19 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "backend": "json-server --watch db.json --port 3002"
+    "backend": "json-server --watch db.json --port 4003"
   },
   "dependencies": {
+    "autoprefixer": "^9",
     "backend": "0.0.0",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "json": "^10.0.0",
     "@material-ui/icons": "^4.11.2",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "vue": "^3.0.11",
     "vue-router": "^4.0.0-0"
   },
@@ -27,6 +31,7 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "vue-cli-plugin-tailwind": "~2.0.6",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0"
   }
