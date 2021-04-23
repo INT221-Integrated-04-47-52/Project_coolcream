@@ -8,7 +8,7 @@
           class="block text-center text-black text-xl py-2 font-bold mb-2"
           for="priceaddress"
         >
-          Add Ice Cream for sale this website.!
+          Add Ice Cream for sale this website!
         </label>
 
         <!-- Add product form -->
@@ -121,17 +121,61 @@
               htmlFor="size"
               >Size</label
             >
-            <div class=" text-blue-600 flex flex-row -mt-2">
-            <option value="S" @click="selectSize('S')" :class="{'bg-blue-600 text-white':formElements.size.value.includes('S')}"  class="mr-2 text-center w-16 border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">S</option>
-            <option value="M" @click="selectSize('M')" :class="{'bg-blue-600 text-white':formElements.size.value.includes('M')}"  class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">M</option> 
-            <option value="L" @click="selectSize('X')" :class="{'bg-blue-600 text-white':formElements.size.value.includes('L')}"  class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">X</option>
-            <option value="XL" @click="selectSize('XL')" :class="{'bg-blue-600 text-white':formElements.size.value.includes('XL')}"  class="mr-2 w-16 text-center border-blue-600 mt-4 border-2  hover:bg-blue-600  hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary">XL</option>
-          </div>
-             <div class="invalid-feedback">
+            <div class="text-blue-600 flex flex-row -mt-2">
+              <option
+                value="S"
+                @click="selectSize('S')"
+                :class="{
+                  'bg-blue-600 text-white': formElements.size.value.includes(
+                    'S'
+                  ),
+                }"
+                class="mr-2 text-center w-16 border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
+              >
+                S
+              </option>
+              <option
+                value="M"
+                @click="selectSize('M')"
+                :class="{
+                  'bg-blue-600 text-white': formElements.size.value.includes(
+                    'M'
+                  ),
+                }"
+                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
+              >
+                M
+              </option>
+              <option
+                value="L"
+                @click="selectSize('L')"
+                :class="{
+                  'bg-blue-600 text-white': formElements.size.value.includes(
+                    'L'
+                  ),
+                }"
+                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
+              >
+                L
+              </option>
+              <option
+                value="XL"
+                @click="selectSize('XL')"
+                :class="{
+                  'bg-blue-600 text-white': formElements.size.value.includes(
+                    'XL'
+                  ),
+                }"
+                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
+              >
+                XL
+              </option>
+            </div>
+            <div class="invalid-feedback">
               {{ getErrorMessage("size") }}
             </div>
-            
-        <!--    <select
+
+            <!--    <select
               class="text-blue-600 flex flex-row -mt-2"
               :class="getInputClass('size')"
               size="size"
@@ -185,6 +229,17 @@
           </div>
 
           <!-- Topping -->
+
+          <!--  <select
+              class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+              :class="getInputClass('topping')"
+              id="topping"
+              topping="topping"
+              v-model="formElements.topping.value"
+              @keyup="onFormChange($event)">
+             
+            </select>-->
+
           <div class="form-group">
             <label
               class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
@@ -192,205 +247,81 @@
             >
               Topping
             </label>
-
-            <select
-              class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-              :class="getInputClass('topping')"
-              id="topping"
-              topping="topping"
-              v-model="formElements.topping.value"
-              @keyup="onFormChange($event)"
-            >
-              <option
-                @click="selectTopping('almond')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'almond',
-                }"
-                value="topping"
-                class="mr-2 text-center w-16 border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Almond
-              </option>
-              <option
-                @click="selectTopping('brownie')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'brownie',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Brownie
-              </option>
-              <option
-                @click="selectTopping('chocolateball')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'chocolateball',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Chocolate Ball
-              </option>
-              <option
-                @click="selectTopping('chocolatechip')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'chocolatechip',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Chocolate chip
-              </option>
-              <option
-                @click="selectTopping('cookiecrumble')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'cookiecrumble',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Cookie Crumble
-              </option>
-              <option
-                @click="selectTopping('oreo')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'oreo',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Oreo
-              </option>
-              <option
-                @click="selectTopping('rainbow')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'rainbow',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Rainbow
-              </option>
-              <option
-                @click="selectTopping('stickyrice')"
-                :class="{
-                  'bg-blue-600 text-white':
-                    formElements.topping.value == 'stickyrice',
-                }"
-                value="topping"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              >
-                Sticky Rice
-              </option>
-            </select>
-          </div>
-          <div class="invalid-feedback">
-            {{ getErrorMessage("topping") }}
-          </div>
-          <div class="mt-2 flex space-x-2">
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-            <img
-              src="../assets/topping-almond.jpeg"
-              alt="almond"
-              class="w-14 h-14 rounded-full border shadow"
-            />
-          </div>
-
-          <!-- <div class="flex">
-              <label class="flex">
-              <input v-model="formElements.topping.value" name="almond" value="almond">
-              <img src="../assets/topping-almond.jpeg" class="w-14 h-14 rounded-full border shadow">
-              </label>
-              <label class="flex">
-              <input v-model="formElements.topping.value" name="chocolateball" value="chocolateball">
-              <img src="../assets/topping-almond.jpeg" class="w-14 h-14 rounded-full border shadow">
-              </label>
+            <div class="space-x-2">
+              <input
+                type="checkbox"
+                name="almond"
+                value="almond"
+                v-model="formElements.topping.value"
+              />
+              <label for="almond">Almond</label>
+              <input
+                type="checkbox"
+                name="brownie"
+                value="brownie"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Brownie</label>
+              <input
+                type="checkbox"
+                name="chocolatechip"
+                value="chocolatechip"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Chocolate Chip</label>
+              <input
+                type="checkbox"
+                name="chocolateball"
+                value="chocolateball"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Chocolate Ball</label>
+              <input
+                type="checkbox"
+                name="cookiecrumble"
+                value="cookiecrumble"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Cookie Crumble</label>
+              <input
+                type="checkbox"
+                name="oreo"
+                value="oreo"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Oreo</label>
+              <input
+                type="checkbox"
+                name="rainbow"
+                value="rainbow"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Rainbow</label>
+              <input
+                type="checkbox"
+                name="stickyrice"
+                value="stickyrice"
+                v-model="formElements.topping.value"
+              />
+              <label for="chocolateball">Sticky Rice</label>
             </div>
-            <br>
-            <span>Selected: {{ formElements.topping.value }}</span> -->
-
-          <div>
-            <!-- <div class="radio-inline space-x-2">
-              <input
-                type="button"
-                class="w-16 text-center border-blue-600 border hover:bg-blue-600 hover:text-white py-0.5 px-4 rounded"
-                name="sizes"
-                value="s"
-              />
-              <input
-                type="button"
-                class="w-16 text-center border-blue-600 border hover:bg-blue-600 hover:text-white py-0.5 px-4 rounded"
-                name="sizem"
-                value="m"
-              />
-              <input
-                type="button"
-                class="w-16 text-center border-blue-600 border hover:bg-blue-600 hover:text-white py-0.5 px-4 rounded"
-                name="sizel"
-                value="l"
-              />
-              <input
-                type="button"
-                class="w-16 text-center border-blue-600 border hover:bg-blue-600 hover:text-white py-0.5 px-4 rounded"
-                name="sizexl"
-                value="xl"
-              />
-            </div> -->
-            
-            <!-- <input type="button" v-model="formElements.size.value" name="sizes">
-            <label for="sizes">S</label>
-            <input type="button" v-model="formElements.size.value" name="sizem">
-            <label for="sizem">M</label>
-            <p>{{ formElements.size.value }}</p>  -->
+            <p>{{ formElements.topping.value }}</p>
           </div>
 
-
-          <!-- <br>  
-            <input type="checkbox" id="jack" value="Jack" v-model="formElements.topping.value">
-            <label for="jack">Jack</label>
-            <input type="checkbox" id="john" value="John" v-model="formElements.topping.value">
-            <label for="john">John</label>
-            <input type="checkbox" id="mike" value="Mike" v-model="formElements.topping.value">
-            <label for="mike">Mike</label>
-            <br>
-            <span>Checked names: {{ formElements.topping.value }}</span> -->
-
+          <div class="form-group">
+            <label
+              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
+              htmlFor="topping"
+            >
+              Last day of sale
+            </label>
+            <input
+              type="date"
+              name="day"
+              v-model="formElements.lastday.value"
+            />
+          </div>
+          <div>{{ formElements.lastday.value }}</div>
           <div>
             <label
               class="text-left block mt-4 text-blue-600 font-bold items-start"
@@ -412,12 +343,12 @@
               Add Product
             </button>
           </div>
-          <!-- </div> -->
         </form>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "RegisterForm",
@@ -431,8 +362,8 @@ export default {
           value: null,
           validator: {
             required: true,
-            minLength: 5,
-            maxLength: 15,
+            minLength: 1,
+            maxLength: 50,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -442,8 +373,8 @@ export default {
           value: null,
           validator: {
             required: true,
-            minLength: 5,
-            maxLength: 300,
+            minLength: 1,
+            maxLength: 200,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -453,8 +384,8 @@ export default {
           value: null,
           validator: {
             required: true,
-            minLength: 5,
-            maxLength: 15,
+            minLength: 1,
+            maxLength: 4,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -481,6 +412,25 @@ export default {
         topping: {
           type: "text",
           value: [],
+          toppinglists: [
+            { id: 3001, name: "Almond" },
+            { id: 3002, name: "Brownie" },
+            { id: 3003, name: "Chocolate ball" },
+            { id: 3004, name: "Chocolate chip" },
+            { id: 3005, name: "Cookie crumble" },
+            { id: 3006, name: "Oreo" },
+            { id: 3007, name: "Rainbow" },
+            { id: 3007, name: "Sticky rice" },
+          ],
+          validator: {
+            required: true,
+          },
+          touched: false,
+          error: { status: true, message: "" },
+        },
+        lastday: {
+          type: "text",
+          value: "",
           validator: {
             required: true,
           },
@@ -495,12 +445,14 @@ export default {
     selectTopping(topping) {
       this.formElements.topping.value = topping;
     },
-    selectSize(size) { 
-      if(this.formElements.size.value.includes(size)){
-      this.formElements.size.value = this.formElements.size.value.filter(s=> s!==size );
-    } else{
-      this.formElements.size.value.push(size)
-    }
+    selectSize(size) {
+      if (this.formElements.size.value.includes(size)) {
+        this.formElements.size.value = this.formElements.size.value.filter(
+          (s) => s !== size
+        );
+      } else {
+        this.formElements.size.value.push(size);
+      }
     },
     uploadImg(event) {
       const file = event.target.files[0];
@@ -587,6 +539,9 @@ export default {
             name: formData.name,
             price: formData.price,
             describe: formData.describe,
+            brand: formData.brand,
+            size: formData.size,
+            topping: formData.topping,
           }),
         });
       } catch (error) {
