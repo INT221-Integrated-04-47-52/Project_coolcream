@@ -11,6 +11,8 @@
     </div>
   </div>
 
+
+
   <div class="details" v-show="isVisible">
     <popup
       @icecream-submit="edit"
@@ -35,7 +37,7 @@ export default {
       isVisible: false,
       ifEdit: false,
       icecream: [],
-      url: "http://localhost:4003/icecream",
+      url: "http://localhost:3000/icecream",
     };
   },
   methods: {
@@ -51,6 +53,10 @@ export default {
             name: icecream.name,
             price: icecream.price,
             describe: icecream.describe,
+            lastday: icecream.lastday,
+            size: icecream.size,
+            brand: icecream.brand,
+            topping: icecream.topping
           }),
         });
         const data = await res.json();
@@ -58,10 +64,14 @@ export default {
           f.id === data.id
             ? {
                 ...f,
-                image: data.image,
-                username: data.username,
-                email: data.email,
-                describe: data.describe,
+            image: data.image,
+            name: data.name,
+            price: data.price,
+            describe: data.describe,
+            lastday: data.lastday,
+            size: data.size,
+            brand: data.brand,
+            topping: data.topping,
               }
             : f
         );

@@ -1,7 +1,6 @@
 <template>
   <div
-    class=" flex justify-center items-center fixed z-50 inset-0 overflow-y-auto"
-  >
+    class=" flex justify-center items-center fixed z-50 inset-0 overflow-y-auto">
     <div class="w-5/12 h-96 bg-white rounded-3xl shadow-lg ">
       <div
         class="cursor-pointer mt-4  mr-8  focus:ring transform transition hover:scale-105 
@@ -15,14 +14,13 @@
       <img
         class=" ml-2 w-72 h-72 transform -rotate-6 transition 
   hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-        :src="icecream.image"
-      />
+        :src="icecream.image" />
 
       <!-- Edit Product -->
       <div class="w-96 flex flex-row-reverse ml-64 text-left">
         <div
           class=" ml-12 -mt-72  mr-16  ext-left block text-gray-800 
-            py-2 font-bold  items-start"
+            py-2 ผfont-bold  items-start"
         >
           <!-- Edit Product name-->
           <p class="my-2 text-black">
@@ -80,27 +78,64 @@
           <!-- Edit Brand ** (Baskin Robbins,Ben&Jerry’s,Dairy Queen,Suzukien,Swensens,Umm Milk) -->
           <p class="my-2 text-black">
           <label for="brand">Brand :</label>
-          <select name="brand" id="brand" v-if="isEdit" v-model="brandEnter">
-            <option value="brand in brandlists">{{brandlists.brand}}</option>
+          <select  v-if="isEdit" name="brand" id="brand" 
+          v-model="brandEnter">
+          <option v-for="ban in brandArray" 
+          :key="ban.id">
+            {{ban.name}}
+          </option>
           </select>
           <span v-else class="text-pink-500"> {{ icecream.brand }} </span>
           </p>
 
           <!-- Edit Size ** (S, M, X, XL) -->
-          <p class="my-2 text-black">
-            Size :
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
-            <button>XL</button>
-          </p>
+          <div class="my-2 text-black">
+            Size : 
+            <select  v-if="isEdit" name="size" id="size" 
+            v-model="sizeEnter">
+            <option v-for="siz in sizeArray" value="siz.name" id="size" name="sizelist" 
+            @click="selectSize(siz.name)"   
+             :class="{  'bg-green-400 text-white': 
+             formElements.size.value.includes(siz.name)&getInputClass('size')}" 
+             :key="siz.id" 
+             class="mr-2 text-center w-16 border-green-400 mt-4 border-2 hover:bg-green-400 
+             hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition
+              hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer">
+             {{siz.name}}
+             </option>
+             </select>
+            </div>
 
           <!-- Edit Topping ** (Almond,Brownie,Chocolate ball,Chocolate chip,Cookie crumble,Oreo,Rainbow,Sticky rice) -->
           <p class="my-2 text-black">
             Topping :
-            
           </p>
-
+          <div  v-for="top in toppingArray" :key="top.id">
+            <div class=" w-32 m-2 mr-4">
+          <img :src="top.image" /></div>
+            </div>
+          </div>
+          
+          <div class="text-pink-400 flex flex-row -mt-2 ">
+            <select  v-if="isEdit" name="topping" id="topping" 
+            v-model="toppingEnter">
+                <option v-for="top in toppingArray" value="top.name" id="topping" name="toppinglist" 
+               @click="selectTopping(top.name)"
+                :class="{  'bg-pink-400 text-white': 
+                formElements.topping.value.includes(top.name)}"
+                :key="top.id"  @keyup="onFormChange($event)"
+                class="mr-2 text-center w-36 border-pink-400 mt-4 border-2 hover:bg-pink-400 
+                hover:text-white font-bold  py-0.5 px-auto rounded focus:ring transform transition
+                 hover:scale-105
+                duration-300 ease-in-out btn btn-primary cursor-pointer"> {{top.name}}
+              
+           <!--     <div class="w-11/12" v-bind:style="{ 'background-image':'url('+ 
+                require('../assets/' + top.image) + ')' }">
+                </div>
+              -->
+             
+                </option>
+           </select>
           <!-- Edit Last day of sale ** -->
           <p class="my-2 text-black">
             Last day of sale :
@@ -139,11 +174,13 @@
   py-2 px-4 rounded focus:ring transform transition hover:scale-105 
   duration-300 ease-in-out "
           type="button "
-          @click="edit"
-        >
+          @click="edit" >
           Edit
         </button>
         
+
+
+
       </div>
     </div>
   </div>
@@ -159,13 +196,6 @@ export default {
       lastdayEnter: "",
       isEdit: false,
       brandEnter: null,
-      brandlists:[
-        {id:'brand1',brand:'Baskin Robbins'},
-        {id:'brand2',brand:'Ben&Jerry’s'},
-        {id:'brand3',brand:'Dairy Queen'},
-        {id:'brand4',brand:'Suzukien'},
-        {id:'brand5',brand:'Swensens'},
-        {id:'brand6',brand:'Umm Milk'},],
       sizeEnter: "",
       toppingEnter: " "
     };
@@ -197,8 +227,8 @@ export default {
           brand: this.brandEnter,
           size: this.sizeEnter,
           topping: this.toppingEnter,
-
-          lastday: this.this.lastdayEnter,          id: icecream.id,
+          lastday: this.this.lastdayEnter,         
+           id: icecream.id,
         });
         this.close();
       }

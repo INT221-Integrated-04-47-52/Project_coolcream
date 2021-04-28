@@ -1,7 +1,8 @@
 <template>
   <div>
+
     <div
-      class="bg-white text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+      class="bg-white opacity-80 text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
     >
       <div class="mb-4">
         <label
@@ -29,7 +30,7 @@
               name="name"
               v-model="formElements.name.value"
               @keyup="onFormChange($event)"
-            />
+            /> <div>{{formElements.name.value}}</div>
             <div class="invalid-feedback">
               {{ getErrorMessage("name") }}
             </div>
@@ -55,6 +56,7 @@
               @keyup="onFormChange($event)"
             >
             </textarea>
+            <div>{{formElements.describe.value}}</div>
             <div class="invalid-feedback">
               {{ getErrorMessage("describe") }}
             </div>
@@ -63,14 +65,8 @@
           <div class="form-group">
             <label
               class="text-left block mt-4 text-blue-600 font-bold items-start"
-              htmlFor="price"
-<<<<<<< HEAD
-              >price</label>
-=======
-              >Price</label
-            >
->>>>>>> 1e95b4bfd14005d4add7020acf07dddda54e13bb
-            <input
+              htmlFor="price">Price</label>
+            <input 
               class="mt-2 shadow text-left appearance-none border rounded w-2/11 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out invalid-feedback"
               type="price"
               :class="getInputClass('price')"
@@ -81,6 +77,7 @@
               placeholder="Input your price.."
             />
             <span class="text-black font-normal ml-2"> Baht </span>
+          {{formElements.price.value}}
             <div>
               {{ getErrorMessage("price") }}
             </div>
@@ -89,30 +86,39 @@
           <!-- Brand -->
           <div class="form-group">
             <label
-              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
-              htmlFor="brand"
-              >Brand</label
-            >
-            <div>
-              <select
-                name="icecreams"
+              class="w-2/11 text-left block text-blue-600 py-2 
+              font-bold mt-2 items-start"
+              htmlFor="brand"  >Brand</label>
+  
+              <div>
+                <select class="border-2 w-2/12 p-2 transform transition 
+                duration-300 ease-in-out" id="brand" name="banlist" 
+                v-model="formElements.brand.value" :class="getInputClass('brand')"
+              @change="sendBrand()">
+                  <option v-for="ban in brandArray" 
+                  :key="ban.id" >
+                    {{ban.name}}
+                  </option>
+                </select>
+              </div>
+              <div>
+            </div>
+           <!-- <select
+                
                 class="border-2 p-2 transform transition duration-300 ease-in-out"
-                :class="getInputClass('brand')"
-                id="brand"
-                brand="brand"
-                v-model="formElements.brand.value"
-                @keyup="onFormChange($event)"
-                required
-              >
-                <option value="" disabled selected>Select your brand</option>
+               
+               >
+
+             <option value="" disabled selected>Select your brand</option>
                 <option value="baskinrobbins">Baskin Robbins</option>
                 <option value="benjerry">Ben&Jerry's</option>
                 <option value="dairyqueen">Dairy Queen</option>
                 <option value="suzukien">Suzukien</option>
                 <option value="swensens">Swensens</option>
-                <option value="ummmilk">Umm Milk</option>
-              </select>
-            </div>
+                <option value="ummmilk">Umm Milk</option> 
+              </select>-->
+            
+
             <div class="invalid-feedback">
               {{ getErrorMessage("brand") }}
             </div>
@@ -120,212 +126,94 @@
 
           <!-- Size -->
           <div class="form-group">
-            <label
-              class="text-left block text-blue-600 pt-2 font-bold mt-2 items-start"
-              htmlFor="size"
-              >Size</label
-            >
             <div class="text-blue-600 flex flex-row -mt-2">
-              <option
-                value="S"
-                @click="selectSize('S')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value.includes(
-                    'S'
-                  ),
-                }"
-                class="mr-2 text-center w-16 border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
-              >
-                S
-              </option>
-              <option
-                value="M"
-                @click="selectSize('M')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value.includes(
-                    'M'
-                  ),
-                }"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
-              >
-                M
-              </option>
-              <option
-                value="L"
-                @click="selectSize('L')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value.includes(
-                    'L'
-                  ),
-                }"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
-              >
-                L
-              </option>
-              <option
-                value="XL"
-                @click="selectSize('XL')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value.includes(
-                    'XL'
-                  ),
-                }"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer"
-              >
-                XL
-              </option>
-            </div>
-            <div class="invalid-feedback">
-              {{ getErrorMessage("size") }}
-            </div>
-
-            <!--    <select
-              class="text-blue-600 flex flex-row -mt-2"
-              :class="getInputClass('size')"
-              size="size"
-              id="size"
-              @keyup="onFormChange($event)" >
-              <input
-                
-                @click="selectSize('S')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value == 'S',
-                }"
-                value="S"
-                class="mr-2 text-center w-16 border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              />
-
-              <input
-                
-                @click="selectSize('M')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value == 'M',
-                }"
-                value="M"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              />
-
-              <input
-                v-model="formElements.size.value"
-                @click="selectSize('L')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value == 'L',
-                }"
-                value="L"
-                class="mr-2 text-center w-16 border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              />
-
-              <input
-                v-model="formElements.size.value"
-                @click="selectSize('XL')"
-                :class="{
-                  'bg-blue-600 text-white': formElements.size.value == 'XL',
-                }"
-                value="XL"
-                class="mr-2 w-16 text-center border-blue-600 mt-4 border-2 hover:bg-blue-600 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
-              />
-              </select>
-              -->
-            <div>{{ formElements.size.value }}</div>
+              <label
+              class="text-left block text-blue-600 pt-2 font-bold mt-2 items-start"
+              htmlFor="size">Size</label >
+          </div>
+          <div class="text-green-600 flex flex-row -mt-2">
+           
+                <option v-for="siz in sizeArray" value="siz.name" id="size" name="sizelist" 
+               @click="selectSize(siz.name)"   
+                :class="{  'bg-green-400 text-white': 
+                formElements.size.value.includes(siz.name)&getInputClass('size')}" 
+                :key="siz.id"  @keyup="onFormChange($event)" 
+                class="mr-2 text-center w-16 border-green-400 mt-4 border-2 hover:bg-green-400 
+                hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition
+                 hover:scale-105 duration-300 ease-in-out btn btn-primary cursor-pointer">
+                {{siz.name}}
+                </option>
+               
+                <div>{{ formElements.size.value }}</div>
+ 
+          </div>
+          
+       
             <div class="invalid-feedback">
               {{ getErrorMessage("size") }}
             </div>
           </div>
-
           <!-- Topping -->
-
-          <!--  <select
-              class="shadow text-left justify-start appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-              :class="getInputClass('topping')"
-              id="topping"
-              topping="topping"
-              v-model="formElements.topping.value"
-              @keyup="onFormChange($event)">
-             
-            </select>-->
-
           <div class="form-group">
-            <label
-              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
-              htmlFor="topping"
-            >
-              Topping
-            </label>
-            <div class="space-x-2">
-              <input
-                type="checkbox"
-                name="almond"
-                value="almond"
-                v-model="formElements.topping.value"
-              />
-              <label for="almond">Almond</label>
-              <input
-                type="checkbox"
-                name="brownie"
-                value="brownie"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Brownie</label>
-              <input
-                type="checkbox"
-                name="chocolatechip"
-                value="chocolatechip"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Chocolate Chip</label>
-              <input
-                type="checkbox"
-                name="chocolateball"
-                value="chocolateball"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Chocolate Ball</label>
-              <input
-                type="checkbox"
-                name="cookiecrumble"
-                value="cookiecrumble"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Cookie Crumble</label>
-              <input
-                type="checkbox"
-                name="oreo"
-                value="oreo"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Oreo</label>
-              <input
-                type="checkbox"
-                name="rainbow"
-                value="rainbow"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Rainbow</label>
-              <input
-                type="checkbox"
-                name="stickyrice"
-                value="stickyrice"
-                v-model="formElements.topping.value"
-              />
-              <label for="chocolateball">Sticky Rice</label>
-            </div>
-            <p>{{ formElements.topping.value }}</p>
+            <div class="text-blue-600 flex flex-row -mt-2">
+              <label
+              class="text-left block text-blue-600 pt-2 font-bold mt-2 items-start"
+              htmlFor="size">Topping</label >
           </div>
-
+       <!--   <div v-for="item in items" :key="item.id">
+            <span>{{item.title}}</span> &nbsp;
+            <img :src="'../assets/'+ item.icon + '.png'" width="50px" height="auto">
+            <img :src="item.icon" width="5000px" height="auto">
+          </div> -->
+        </div > <div class=" flex flex-row  w-50 " >
+          <div  v-for="top in toppingArray" :key="top.id">
+            <div class=" w-32 m-2 mr-4">
+          <img :src="top.image" /></div>
+            </div>
+          </div>
+          <div class="invalid-feedback">
+            {{ getErrorMessage("size") }}
+          </div>
+          <div class="text-pink-400 flex flex-row -mt-2 ">
+           
+                <option v-for="top in toppingArray" value="top.name" id="topping" name="toppinglist" 
+               @click="selectTopping(top.name)"
+                :class="{  'bg-pink-400 text-white': 
+                formElements.topping.value.includes(top.name)}"
+                :key="top.id"  @keyup="onFormChange($event)"
+                class="mr-2 text-center w-36 border-pink-400 mt-4 border-2 hover:bg-pink-400 
+                hover:text-white font-bold  py-0.5 px-auto rounded focus:ring transform transition
+                 hover:scale-105
+                duration-300 ease-in-out btn btn-primary cursor-pointer"> {{top.name}}
+              
+           <!--     <div class="w-11/12" v-bind:style="{ 'background-image':'url('+ 
+                require('../assets/' + top.image) + ')' }">
+                </div>
+              -->
+             
+                </option><br>
+           
+             <!--   <div v-for="top in toppingArray" :key="top.id">
+                  <p>{{ top.name }}</p>
+                  <img :src="top.image" />
+                </div>-->
+                <div>{{ formElements.topping.value }}</div>
+               
+            </div>
           <div class="form-group">
-            <label
-              class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
+           
+            <label class="text-left block text-blue-600 py-2 font-bold mt-2 items-start"
               htmlFor="topping"
             >
               Last day of sale
             </label>
-            <input
-              type="date"
-              name="day"
-              v-model="formElements.lastday.value"
+            <input :class="getInputClass('lastday')" @keyup="onFormChange($event)"
+            id="lastday"  
+              type="date"  name="lastday"  v-model="formElements.lastday.value"
             />
-          </div>
+          
           <div>{{ formElements.lastday.value }}</div>
+        </div>
           <div>
             <label
               class="text-left block mt-4 text-blue-600 font-bold items-start"
@@ -338,6 +226,7 @@
               @change="uploadImg"
             />
           </div>
+
           <div class="text-center">
             <button
               type="submit"
@@ -347,8 +236,20 @@
               Add Product
             </button>
           </div>
-        </form>
+         
+          <div>{{formElements.name.value}}</div>
+          <div>{{formElements.describe.value}}</div>
+          <div>{{formElements.price.value}}</div>
+          <div>{{formElements.brand.value}}</div>
+          <div>{{formElements.size.value}}</div>
+          <div>{{formElements.topping.value}}</div>
+          <div>{{formElements.lastday.value}}</div>
+    
+          <div>{{formElements.brand.value}}</div>
+     
+         </form>
       </div>
+
     </div>
   </div>
 </template>
@@ -358,6 +259,12 @@ export default {
   name: "RegisterForm",
   data() {
     return {
+      siz: "",
+      ban:"",
+      top:"",
+      sizeArray: "",
+      brandArray: "",
+      toppingArray: "",
       props: ["brandlists"],
       image: null,
       formElements: {
@@ -367,7 +274,7 @@ export default {
           validator: {
             required: true,
             minLength: 1,
-            maxLength: 50,
+            maxLength: 35,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -399,16 +306,21 @@ export default {
           value: "",
           validator: {
             required: true,
-            value: "",
+            minLength: 1,
+            maxLength: 200,
+          
           },
           touched: false,
           error: { status: true, message: "" },
-        },
+        },  
         size: {
           type: "text",
           value: [],
           validator: {
             required: true,
+            minLength: 1,
+            maxLength: 200,
+           
           },
           touched: false,
           error: { status: true, message: "" },
@@ -416,18 +328,10 @@ export default {
         topping: {
           type: "text",
           value: [],
-          toppinglists: [
-            { id: 3001, name: "Almond" },
-            { id: 3002, name: "Brownie" },
-            { id: 3003, name: "Chocolate ball" },
-            { id: 3004, name: "Chocolate chip" },
-            { id: 3005, name: "Cookie crumble" },
-            { id: 3006, name: "Oreo" },
-            { id: 3007, name: "Rainbow" },
-            { id: 3007, name: "Sticky rice" },
-          ],
           validator: {
             required: true,
+            minLength: 1,
+            maxLength: 200,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -437,6 +341,8 @@ export default {
           value: "",
           validator: {
             required: true,
+            minLength: 1,
+            maxLength: 200,
           },
           touched: false,
           error: { status: true, message: "" },
@@ -446,8 +352,19 @@ export default {
   },
 
   methods: {
+   sendBrand(){
+     if(this.formElements.brand.value!=""){
+      this.formElements.brand.error.status = false
+     }
+   },
     selectTopping(topping) {
-      this.formElements.topping.value = topping;
+      if (this.formElements.topping.value.includes(topping)) {
+        this.formElements.topping.value = this.formElements.topping.value.filter(
+          (t) => t !== topping
+        );
+      } else {
+        this.formElements.topping.value.push(topping);
+      }
     },
     selectSize(size) {
       if (this.formElements.size.value.includes(size)) {
@@ -467,28 +384,38 @@ export default {
       reader.readAsDataURL(file);
     },
     onFormChange(event) {
+
+      if(event.target.name = name || event.target.name = describe || event.target.name = price){
       const name = event.target.name;
       const value = event.target.value;
+     
       let updatedForm = { ...this.formElements };
       updatedForm[name].value = value;
       updatedForm[name].touched = true;
       const validatorObject = this.checkValidator(
-        value,
-        updatedForm[name].validator
+        value, updatedForm[name].validator
       );
       updatedForm[name].error = {
         status: validatorObject.status,
         message: validatorObject.message,
       };
+    }else if(){ 
+      
+    }
       let formStatus = true;
       for (let name in updatedForm) {
+       
         if (updatedForm[name].validator.required === true) {
+       console.log(name + " " + updatedForm[name].error.status)
           formStatus = !updatedForm[name].error.status && formStatus;
         }
       }
       this.formElements = updatedForm;
       this.formValid = formStatus;
+    
     },
+ 
+
     checkValidator(value, rule) {
       let valid = true;
       let message = "";
@@ -510,6 +437,7 @@ export default {
           message = "Incorrect price";
         }
       }
+
       return { status: !valid, message: message };
     },
     getInputClass(name) {
@@ -526,14 +454,15 @@ export default {
       return this.formElements[name].error.message;
     },
     async onFormSubmit() {
+    
       const formData = {};
       for (let name in this.formElements) {
         formData[name] = this.formElements[name].value;
       }
-      //console.log(formData);
+   
 
       try {
-        await fetch("http://localhost:3002/icecream", {
+        await fetch("http://localhost:3000/icecream", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -551,10 +480,32 @@ export default {
       } catch (error) {
         console.log(`Could not save! ${error}`);
       }
+      
 
       //{name: "efefefefef", describe: "efeffff",
       //price: "pinmasa_kushina@hotmail.com"}
+    }, 
+  async fetchSize() {
+      const res = await fetch('http://localhost:3000/size') 
+      const data = await res.json() 
+      return data
     },
+    async fetchBrand() {
+      const res = await fetch('http://localhost:3000/brand') 
+      const data = await res.json() 
+      return data
+    },
+    async fetchTopping() {
+      const res = await fetch('http://localhost:3000/topping') 
+      const data = await res.json() 
+      return data
+    },
+
+  },
+   async created() {
+      this.sizeArray = await this.fetchSize() 
+      this.brandArray = await this.fetchBrand() 
+      this.toppingArray = await this.fetchTopping()
   },
 };
 </script>

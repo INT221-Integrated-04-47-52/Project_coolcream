@@ -8,8 +8,7 @@
         Add Product 
       </h1>--> 
       <div class="mx-auto w-3/4 my-4">
-       
-      <img src="../assets/addproduct.png" alt="Add Product">
+      <img src="../assets/addproduct.png" alt="Add Product"/>
       </div>
       <register-form class="w-full"></register-form>
     </div>

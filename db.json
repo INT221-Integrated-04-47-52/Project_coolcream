@@ -1,13 +1,149 @@
 {
-    "ice-cream": [
-        {
-        "name": "Oreo Blizzard",
-        "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
-        "price": 50,
-        "brand": "Dairy Queen",
-        "size": ["S","M","L","XL"],
-        "topping": ["Almond","Oreo"],
-        "lastDay": "27/07/2021"
-        }
-    ]
+  "ice-cream": [
+    {
+      "id": 1,
+      "name": "Oreo Blizzard",
+      "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+      "price": 50,
+      "brand": "Dairy Queen",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "topping": [
+        "Almond",
+        "Oreo"
+      ],
+      "lastDay": "27/07/2021"
+    },
+    {
+      "id": 2,
+      "name": "Vanila",
+      "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+      "price": 100,
+      "brand": "Swensens",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "topping": [
+        "Almond",
+        "Oreo",
+        "Wipcream"
+      ],
+      "lastDay": "20/07/2021"
+    },
+    {
+      "id": 3,
+      "name": "Oreosdfdf Blizzard",
+      "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+      "price": 50,
+      "brand": "Dairy Queen",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "topping": [
+        "Almond",
+        "Oreo"
+      ],
+      "lastDay": "27/07/2021"
+    },
+    {
+      "id": 4,
+      "name": "Oreo fdsfdsfdfBlizzard",
+      "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+      "price": 50,
+      "brand": "Dairy Queen",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "topping": [
+        "Almond",
+        "Oreo"
+      ],
+      "lastDay": "27/07/2021"
+    },
+    {
+      "id": 5,
+      "name": "Oreovfvsvfvfs Blizzard",
+      "description": "Oreo cookie pieces blended with DQ vanilla soft serve to Blizzard Perfection.",
+      "price": 50,
+      "brand": "Dairy Queen",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "topping": [
+        "Almond",
+        "Oreo"
+      ],
+      "lastDay": "27/07/2021"
+    }
+  ],
+  "size": [
+    {
+      "name": "S",
+      "id": 1
+    },
+    {
+      "name": "M",
+      "id": 2
+    },
+    {
+      "name": "L",
+      "id": 3
+    },
+    {
+      "name": "XL",
+      "id": 4
+    }
+  ],
+  "brand": [
+    {
+      "name": "Baskin Robbins",
+      "id": 1
+    },
+    {
+      "name": "Ben&Jerry's",
+      "id": 2
+    },
+    {
+      "name": "Dairy Queen",
+      "id": 3
+    },
+    {
+      "name": "Suzukien",
+      "id": 4
+    },
+    {
+      "name": "Swensens",
+      "id": 5
+    },
+    {
+      "name": "Umm Milk",
+      "id": 6
+    }
+  ],
+  "topping": [
+    { "id": 3001, "name": "Almond" ,"image": "https://i.ibb.co/8xmY2Kz/topping1.png"},
+    { "id": 3002, "name": "Brownie","image": "https://i.ibb.co/tpp6Kxd/topping2.png" },
+    { "id": 3003, "name": "Chocolate ball" ,"image": "https://i.ibb.co/8Bj73Kc/topping3.png" },
+    { "id": 3004, "name": "Chocolate chip" ,"image": "https://i.ibb.co/FmxX72F/topping4.png" },
+    { "id": 3005, "name": "Cookie crumble" ,"image": "https://i.ibb.co/ZNCDbdS/topping5.png" },
+    { "id": 3006, "name": "Oreo","image": "https://i.ibb.co/cyDh1Mx/topping6.png"  },
+    { "id": 3007, "name": "Rainbow" ,"image": "https://i.ibb.co/HFgL08q/topping7.png" },
+    { "id": 3007, "name": "Sticky rice" ,"image": "https://i.ibb.co/z4DczRy/topping8.png" }
+  ]
 }
