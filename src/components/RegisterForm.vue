@@ -385,8 +385,8 @@ export default {
     },
     onFormChange(event) {
 
-      if(event.target.name = name || event.target.name = describe || event.target.name = price){
-      const name = event.target.name;
+    /*  if(event.target.name = name || event.target.name = describe || event.target.name = price){
+    */  const name = event.target.name;
       const value = event.target.value;
      
       let updatedForm = { ...this.formElements };
@@ -399,9 +399,9 @@ export default {
         status: validatorObject.status,
         message: validatorObject.message,
       };
-    }else if(){ 
+  /*  }else if(){ 
       
-    }
+    }*/
       let formStatus = true;
       for (let name in updatedForm) {
        
@@ -412,9 +412,9 @@ export default {
       }
       this.formElements = updatedForm;
       this.formValid = formStatus;
-    
+
     },
- 
+
 
     checkValidator(value, rule) {
       let valid = true;
