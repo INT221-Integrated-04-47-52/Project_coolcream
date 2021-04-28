@@ -1,14 +1,12 @@
 <template>
   <div>
-
     <div
       class="bg-white opacity-80 text-left w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
     >
       <div class="mb-4">
         <label
           class="block text-center text-black text-xl py-2 font-bold mb-2"
-          for="priceaddress"
-        >
+          for="priceaddress">
           Add Ice Cream for sale this website!
         </label>
 
@@ -91,32 +89,20 @@
               htmlFor="brand"  >Brand</label>
   
               <div>
+               
                 <select class="border-2 w-2/12 p-2 transform transition 
                 duration-300 ease-in-out" id="brand" name="banlist" 
                 v-model="formElements.brand.value" :class="getInputClass('brand')"
-              @change="sendBrand()">
-                  <option v-for="ban in brandArray" 
-                  :key="ban.id" >
+              @change="sendBrand()"> 
+              <option v-for="ban in brandArray" :key="ban.id" >
                     {{ban.name}}
                   </option>
                 </select>
+           
               </div>
               <div>
             </div>
-           <!-- <select
-                
-                class="border-2 p-2 transform transition duration-300 ease-in-out"
-               
-               >
-
-             <option value="" disabled selected>Select your brand</option>
-                <option value="baskinrobbins">Baskin Robbins</option>
-                <option value="benjerry">Ben&Jerry's</option>
-                <option value="dairyqueen">Dairy Queen</option>
-                <option value="suzukien">Suzukien</option>
-                <option value="swensens">Swensens</option>
-                <option value="ummmilk">Umm Milk</option> 
-              </select>-->
+         
             
 
             <div class="invalid-feedback">
@@ -136,7 +122,7 @@
                 <option v-for="siz in sizeArray" value="siz.name" id="size" name="sizelist" 
                @click="selectSize(siz.name)"   
                 :class="{  'bg-green-400 text-white': 
-                formElements.size.value.includes(siz.name)&getInputClass('size')}" 
+                formElements.size.value.includes(siz.name)}" 
                 :key="siz.id"  @keyup="onFormChange($event)" 
                 class="mr-2 text-center w-16 border-green-400 mt-4 border-2 hover:bg-green-400 
                 hover:text-white font-bold py-0.5 px-4 rounded focus:ring transform transition
@@ -145,7 +131,7 @@
                 </option>
                
                 <div>{{ formElements.size.value }}</div>
- 
+ <!--&getInputClass('size')-->
           </div>
           
        
@@ -160,11 +146,7 @@
               class="text-left block text-blue-600 pt-2 font-bold mt-2 items-start"
               htmlFor="size">Topping</label >
           </div>
-       <!--   <div v-for="item in items" :key="item.id">
-            <span>{{item.title}}</span> &nbsp;
-            <img :src="'../assets/'+ item.icon + '.png'" width="50px" height="auto">
-            <img :src="item.icon" width="5000px" height="auto">
-          </div> -->
+
         </div > <div class=" flex flex-row  w-50 " >
           <div  v-for="top in toppingArray" :key="top.id">
             <div class=" w-32 m-2 mr-4">
@@ -230,7 +212,11 @@
           <div class="text-center">
             <button
               type="submit"
-              class="mt-4 bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out btn btn-primary"
+              class="mt-4 bg-gradient-to-r from-purple-800 
+              to-green-500 hover:from-pink-500 hover:to-green-500 
+              text-white font-bold py-2 px-4 rounded focus:ring transform 
+              transition hover:scale-105 duration-300 ease-in-out btn 
+              btn-primary"
               :disabled="!formValid"
             >
               Add Product
@@ -244,9 +230,7 @@
           <div>{{formElements.size.value}}</div>
           <div>{{formElements.topping.value}}</div>
           <div>{{formElements.lastday.value}}</div>
-    
-          <div>{{formElements.brand.value}}</div>
-     
+         
          </form>
       </div>
 
@@ -352,12 +336,14 @@ export default {
   },
 
   methods: {
-   sendBrand(){
+   sendBrand(brand){
+     console.log(brand)
      if(this.formElements.brand.value!=""){
       this.formElements.brand.error.status = false
      }
    },
     selectTopping(topping) {
+      console.log(topping)
       if (this.formElements.topping.value.includes(topping)) {
         this.formElements.topping.value = this.formElements.topping.value.filter(
           (t) => t !== topping
@@ -367,6 +353,7 @@ export default {
       }
     },
     selectSize(size) {
+      console.log(size)
       if (this.formElements.size.value.includes(size)) {
         this.formElements.size.value = this.formElements.size.value.filter(
           (s) => s !== size
@@ -384,12 +371,12 @@ export default {
       reader.readAsDataURL(file);
     },
     onFormChange(event) {
-
-    /*  if(event.target.name = name || event.target.name = describe || event.target.name = price){
-    */  const name = event.target.name;
+      const name = event.target.name;
       const value = event.target.value;
-     
+      console.log(event + " " + event.target.name + " " +event.target.value)
       let updatedForm = { ...this.formElements };
+  /*if(event.target.name == name || event.target.name == describe || event.target.name == price){
+    */
       updatedForm[name].value = value;
       updatedForm[name].touched = true;
       const validatorObject = this.checkValidator(
@@ -399,9 +386,8 @@ export default {
         status: validatorObject.status,
         message: validatorObject.message,
       };
-  /*  }else if(){ 
-      
-    }*/
+  /*}else if(event.target.name == size || event.target.name == topping || event.target.name == lastday){ 
+  */
       let formStatus = true;
       for (let name in updatedForm) {
        
@@ -412,10 +398,9 @@ export default {
       }
       this.formElements = updatedForm;
       this.formValid = formStatus;
-
-    },
-
-
+    
+    
+},
     checkValidator(value, rule) {
       let valid = true;
       let message = "";
@@ -510,13 +495,4 @@ export default {
 };
 </script>
 
-<style>
-#login-logo {
-  width: 100%;
-  height: 200px;
-  object-fit: scale-down;
-}
-.card {
-  max-width: 450px;
-}
-</style>
+
